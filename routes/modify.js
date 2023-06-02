@@ -34,6 +34,7 @@ router.post('/', function (req, res, next) {
         .where({ "id": modify_taskid })
         .update({ content: modify_task,date:modify_date,time:modify_time })
         .then(function () {
+            // redirectをやめてみる
             res.redirect('/')
         })
         .catch(function (err) {
