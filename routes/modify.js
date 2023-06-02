@@ -21,13 +21,13 @@ router.get('/', function (req, res, next) {
     });
 });
 
-router.post('/', function (req, res, next) {
+router.get('/task', function (req, res, next) {
     const userId = req.session.userid;
     const isAuth = Boolean(userId);
-    const modify_taskid = req.body.modify_taskid;
-    const modify_task = req.body.modify_task;
-    const modify_date = req.body.modify_date;
-    const modify_time = req.body.modify_time;
+    const modify_taskid = req.query.modify_taskid;
+    const modify_task = req.query.modify_task;
+    const modify_date = req.query.modify_date;
+    const modify_time = req.query.modify_time;
     
     knex("tasks")
         .where({ "id": modify_taskid })

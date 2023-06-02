@@ -97,7 +97,7 @@
             <form action="user" method="post">
               <button id="button_" class="btn btn-danger" type='submit'>ユーザー一覧へ</button>
             </form>
-            
+
             <script>
               function deleteRow() {
                 const checkedList = document.querySelectorAll(".table [name='checkbox']:checked");
@@ -131,15 +131,35 @@
                 }
               }
 
+
+
               window.addEventListener('load', loadFinished);
               function loadFinished() {
-                const modify_time = req.body.modify_time;
-                const id_button = button_+ modify_taskid
+                // URL取得
+                const queryString = window.location.search;
+                var queryObject = new Object();
+                if (queryString) {
+                  // queryString = queryString.substring(1);
+                  // &で区切って配列にする
+                  var parameters = queryString.split('&');
+
+                  // for (var i = 0; i < parameters.length; i++) {
+                    var element = parameters[0].split('=');
+
+                    var paramName = decodeURIComponent(element[0]);
+                    var paramValue = decodeURIComponent(element[1]);
+
+                    console.log(paramValue);
+                  // }
+                }
+
+                const id_button = "button_" + paramValue
+                console.log(id_button);
                 const buttonLeft = document.getElementById(id_button).getBoundingClientRect().left;
                 const buttonTop = document.getElementById(id_button).getBoundingClientRect().top;
                 window.scrollTo({
                   left: buttonLeft,
-                  top: buttonTop,
+                  top: buttonTop -300,
                   behavior: 'smooth'
                 });
               };

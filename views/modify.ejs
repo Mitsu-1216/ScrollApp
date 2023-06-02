@@ -15,7 +15,7 @@
       <%- include('./header'); %>
       <%- include('./error_messages'); %>
             <div class="container text-center">
-                  <form action="/modify" method="post">
+                  <form action="/modify/task" method="get">
                     <input type="hidden" name="modify_taskid" value="<%= default_taskid %>"/>
                         <label>タスク名</label>
                         <input required type="text" name="modify_task" value="<%= default_task %>"/>
