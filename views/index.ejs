@@ -62,8 +62,8 @@
                     </span>
                   </td>
                   <td>
-                    <form action="/modify" method="GET">
-                      <input id="button_<%= todo.id %>" type="hidden" name="default_taskid" value="<%= todo.id %>" />
+                    <form action="/modify" method="GET" id="button_<%= todo.id %>">
+                      <input type="hidden" name="default_taskid" value="<%= todo.id %>" />
                       <input type="hidden" name="default_task" value="<%= todo.content %>" />
                       <input type="hidden" name="default_date" value="<%= todo.date %>" />
                       <input type="hidden" name="default_time" value="<%= todo.time %>" />
@@ -133,9 +133,10 @@
 
               window.addEventListener('load', loadFinished);
               function loadFinished() {
-                console.log();
-                const buttonLeft = document.getElementById("button_" + 12).getBoundingClientRect().left;
-                const buttonTop = document.getElementById("button_" + 12).getBoundingClientRect().top;
+                const modify_time = req.body.modify_time;
+                const id_button = button_+ modify_taskid
+                const buttonLeft = document.getElementById(id_button).getBoundingClientRect().left;
+                const buttonTop = document.getElementById(id_button).getBoundingClientRect().top;
                 window.scrollTo({
                   left: buttonLeft,
                   top: buttonTop,
