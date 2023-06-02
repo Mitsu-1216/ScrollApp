@@ -10,13 +10,14 @@
 </head>
 
 <body>
-  <%- include('./header'); %>
+
     <div class="main">
       <%- include('./error_messages'); %>
         <% if(isAuth) { %>
           <div class="container text-center">
             <div class="m-3">
               <form action="/" method="post">
+                <label class="text-success"></label>
                 <input required type="text" name="add" placeholder="入力してね" />
                 <input required type="date" id="today" name="task_date" />
                 <input required type="time" id="now_time" name="task_time" />
