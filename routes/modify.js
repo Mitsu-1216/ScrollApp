@@ -29,6 +29,7 @@ router.get('/task', function (req, res, next) {
   const modify_date = req.query.modify_date;
   const modify_time = req.query.modify_time;
 
+  // やることアップデート
   knex("tasks")
     .where({ "id": modify_taskid })
     .update({ content: modify_task, date: modify_date, time: modify_time })
