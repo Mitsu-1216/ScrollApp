@@ -28,14 +28,40 @@ router.post('/', function (req, res, next) {
     const modify_task = req.body.modify_task;
     const modify_date = req.body.modify_date;
     const modify_time = req.body.modify_time;
-
     
     knex("tasks")
         .where({ "id": modify_taskid })
         .update({ content: modify_task,date:modify_date,time:modify_time })
         .then(function () {
+            if (isAuth) {
+                knex("tasks")
+                  .where({ "user_id": userId })
+                  .select("*")
+                  .orderBy('date', 'asc')
+                  .orderBy('time', 'asc')
+                  // データベース操作が正常に行われた場合のそれに続く処理
+                  .then(function (results) {
+                    // // 日付の形式変換
+                    // for (let i = 0; i < results.length; i++) {
+                    //   results[i].date = results[i].date.toLocaleDateString();
+                    //   console.log(results[i].date);
+                    // }
+            
+                    // 時間の形式変換
+                    for (let i = 0; i < results.length; i++) {
+                      results[i].time = results[i].time.toString().substring(0, 5);
+                    }
+                    res.render('index', {
+                      title: 'ToDo App',
+                      todos: results,
+                      modify_taskid:modify_taskid,
+                      isAuth: isAuth,
+                    });
+            
+                  })
             // redirectをやめてみる
-            res.redirect('/')
+            // res.redirect('/')
+        }
         })
         .catch(function (err) {
             console.error(err);

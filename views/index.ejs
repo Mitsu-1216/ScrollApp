@@ -97,7 +97,7 @@
             <form action="user" method="post">
               <button id="button_" class="btn btn-danger" type='submit'>ユーザー一覧へ</button>
             </form>
-
+            
             <script>
               function deleteRow() {
                 const checkedList = document.querySelectorAll(".table [name='checkbox']:checked");
@@ -133,8 +133,9 @@
 
               window.addEventListener('load', loadFinished);
               function loadFinished() {
-                const buttonLeft = document.getElementById("button_").getBoundingClientRect().left;
-                const buttonTop = document.getElementById("button_").getBoundingClientRect().top;
+                console.log();
+                const buttonLeft = document.getElementById("button_" + 12).getBoundingClientRect().left;
+                const buttonTop = document.getElementById("button_" + 12).getBoundingClientRect().top;
                 window.scrollTo({
                   left: buttonLeft,
                   top: buttonTop,
