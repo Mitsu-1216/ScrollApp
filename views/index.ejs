@@ -3,7 +3,7 @@
 
 <head>
   <title>
-    <%= title %>
+    やることリスト
   </title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -36,49 +36,49 @@
                 <th></th>
                 <th></th>
               </tr>
-              <% for(let todo of todos){ %>
+              <% for(let result of results){ %>
                 <tr>
-                  <td><input type="checkbox" class="checks" name='checkbox' value="<%= todo.id %>"></td>
+                  <td><input type="checkbox" class="checks" name='checkbox' value="<%= result.id %>"></td>
                   <td>
-                    <% if(todo.status=='未完了' ) { %>
+                    <% if(result.status=='未完了' ) { %>
                       <span class="text-danger">
-                        <%= todo.status %>
+                        <%= result.status %>
                       </span>
                       <% } else { %>
                         <span class="text-primary">
-                          <%= todo.status %>
+                          <%= result.status %>
                         </span>
                         <% } %>
                   </td>
                   <td>
                     <span>
-                      <%= todo.content %>
+                      <%= result.content %>
                     </span>
                   </td>
                   <td>
                     <span>
-                      <%= todo.date %>
-                        <%= todo.time %>
+                      <%= result.date %>
+                        <%= result.time %>
                     </span>
                   </td>
                   <td>
-                    <form action="/modify" method="GET" id="button_<%= todo.id %>">
-                      <input type="hidden" name="default_taskid" value="<%= todo.id %>" />
-                      <input type="hidden" name="default_task" value="<%= todo.content %>" />
-                      <input type="hidden" name="default_date" value="<%= todo.date %>" />
-                      <input type="hidden" name="default_time" value="<%= todo.time %>" />
+                    <form action="/modify" method="GET" id="button_<%= result.id %>">
+                      <input type="hidden" name="default_taskid" value="<%= result.id %>" />
+                      <input type="hidden" name="default_task" value="<%= result.content %>" />
+                      <input type="hidden" name="default_date" value="<%= result.date %>" />
+                      <input type="hidden" name="default_time" value="<%= result.time %>" />
                       <input class="btn btn-primary" type="submit" value="編集" />
                     </form>
                   </td>
                   <td>
-                    <% if(todo.status=='未完了' ) { %>
+                    <% if(result.status=='未完了' ) { %>
                       <form action="/completebutton" method="post" id="delete">
-                        <input type="hidden" name="task_id" value="<%= todo.id %>" />
+                        <input type="hidden" name="task_id" value="<%= result.id %>" />
                         <button class="btn btn-dark" type='submit'>完了</button>
                       </form>
                       <% } else { %>
                         <form action="incompletebutton" method="post" id="delete">
-                          <input type="hidden" name="task_id" value="<%= todo.id %>" />
+                          <input type="hidden" name="task_id" value="<%= result.id %>" />
                           <button class="btn btn-danger" type='submit'>未完了</button>
                         </form>
                         <% } %>
