@@ -136,18 +136,15 @@
             window.addEventListener('load', loadFinished);
             function loadFinished() {
               // URL取得
-              const queryString = window.location.search;
+              const g_url = window.location.search;
               var queryObject = new Object();
-              if (queryString) {
-                // queryString = queryString.substring(1);
-                // &で区切って配列にする
+              if (g_url) {
                 var parameters = queryString.split('&');
                 var element = parameters[0].split('=');
-                var paramValue = decodeURIComponent(element[1]);
+                var get_taskid = decodeURIComponent(element[1]);
               }
 
-              const id_button = "button_" + paramValue
-              console.log(id_button);
+              const id_button = "button_" + get_taskid
               const buttonLeft = document.getElementById(id_button).getBoundingClientRect().left;
               const buttonTop = document.getElementById(id_button).getBoundingClientRect().top;
               window.scrollTo({
