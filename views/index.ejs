@@ -27,6 +27,44 @@
           <div class="task m-5">
             <h3>やること一覧</h3>
           </div>
+          <form action='test2.html'>
+            <button type='submit'>BUTTON 1</button>
+            <div>
+            </div>
+          
+            <button type='submit'>BUTTON 2</button>
+            <div>
+            </div>
+          
+            <button type='submit'>BUTTON 3</button>
+            <div>
+            </div>
+          
+            <button type='submit'>BUTTON 4</button>
+            <div>
+            </div>
+          </form>
+          
+          <script>
+    window.addEventListener('DOMContentLoaded', () => {
+  const clickElementOffsetTop = sessionStorage.getItem('clickElementOffsetTop');
+  if (clickElementOffsetTop) {
+    window.scroll({
+      top: clickElementOffsetTop,
+      behavior: 'smooth',
+    });
+  }
+});
+
+document.addEventListener('click', event => {
+  const t = event.target;
+  if (t.tagName !== 'BUTTON') return;
+
+  if (t.offsetTop) {
+    sessionStorage.setItem('clickElementOffsetTop', t.offsetTop);
+  }
+});
+          </script>
           <table border="1" class="table">
             <tr>
               <th>チェック</th>
